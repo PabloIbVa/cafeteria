@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial;
-    background: #e3f3d2;
+    font-family: Arial, sans-serif;
+    background: #e3f3d2; /* Tu color original */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -11,11 +11,11 @@ body {
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
-    background: transparent;
 }
 
 header {
     background: none;
+    margin-top: 15px;
 }
 
 .navbar {
@@ -27,33 +27,14 @@ header {
     align-items: center;
 }
 
-.navbar a {
-    text-decoration: none;
-    color: #00341c;
-    font-weight: bold;
-}
+.navbar a { text-decoration: none; color: #00341c; font-weight: bold; }
+.nav-icons img { width: 24px; margin-left: 15px; cursor: pointer; }
 
-.nav-icons img {
-    width: 24px;
-    margin-left: 15px;
-    cursor: pointer;
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.logo {
-    font-size: 22px;
-}
-
+/* --- BARRA DE BÚSQUEDA (ESTILO ORIGINAL RESTAURADO) --- */
 .busqueda {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 20px 0 30px 0; /* Un poco de espacio abajo */
 }
 
 .busqueda input {
@@ -61,53 +42,88 @@ header {
     padding: 10px;
     font-size: 16px;
     border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 
+/* --- ESTRUCTURA ALINEADA --- */
+.contenido-principal {
+    display: flex;            /* Esto pone los filtros y productos lado a lado */
+    align-items: flex-start;  /* IMPORTANTE: Alinea ambos al TOPE superior */
+    gap: 30px;                /* Espacio entre filtro y productos */
+    margin-bottom: 40px;
+}
+
+/* --- FILTROS --- */
 .filtros {
     background: white;
     padding: 20px;
-    width: 220px;
+    width: 250px;             /* Ancho fijo */
     border-radius: 15px;
-    margin-left: 20px;
-    float: left;
-    position: sticky; 
-    top: 5rem;        
-    max-height: calc(100vh - 7rem); 
-    overflow: auto;
+    flex-shrink: 0;           /* Evita que se aplaste */
+    position: sticky;
+    top: 20px;
 }
 
-article#contenedorProductos {
-    margin-left: 270px;
-    padding: 20px;
+.filtro-item { margin-bottom: 15px; }
+.filtro-item label { display: block; margin-bottom: 5px; font-weight: bold; }
+.filtro-item select, .filtro-item input { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+
+.tiempo-group { display: flex; gap: 5px; }
+.tiempo-group button { flex: 1; padding: 5px; cursor: pointer; }
+
+/* --- PRODUCTOS --- */
+#contenedorProductos {
+    flex: 1;                  /* Ocupa el resto del espacio */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
+/* --- TARJETA DE PRODUCTO --- */
 .card {
     display: flex;
     align-items: center;
     background: white;
-    margin-bottom: 15px;
     padding: 15px;
     border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .card img {
-    width: 100%;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin-right: 20px;
-    background: #ccc;
+    object-fit: contain; /* Para que la imagen no se deforme */
+    background: #fff;
+    border-radius: 10px;
 }
+
+.card h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
+.card p { margin: 0; color: #555; font-size: 0.9rem; }
+.card strong { color: #000; font-size: 1.1rem; }
+
+/* Tabla interna para organizar texto (opcional, heredado de tu código) */
+.card table { width: 100%; }
+.card td { vertical-align: middle; }
 
 .cantidad {
     margin-left: auto;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    min-width: 100px;
+    justify-content: flex-end;
 }
 
 .cantidad button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 footer {
@@ -116,7 +132,4 @@ footer {
     margin-top: auto;
     text-align: center;
     color: #fff;
-    position: relative;
-    clear: both;
-    z-index: 0;
 }
