@@ -13,6 +13,30 @@ body {
     justify-content: center;
     align-items: center;
 }
+header {
+    background: none;
+}
+
+.navbar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00341c;
+    font-weight: bold;
+}
+
+.nav-icons img {
+    width: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
 
 /* Caja principal del login/registro */
 .login-box, .register-box {
