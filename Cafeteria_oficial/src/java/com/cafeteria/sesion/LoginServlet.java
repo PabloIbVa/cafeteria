@@ -29,20 +29,30 @@ public class LoginServlet extends HttpServlet {
                 "SELECT id, matricula, nombre, apellidos, correo, rol FROM usuarios WHERE correo = ? AND contrasena = ?"
             );
             ps.setString(1, correo);
-            ps.setString(2, contrasena); // si usas hash, comparar con hash
+            ps.setString(2, contrasena);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                HttpSession session = request.getSession(true); // crea sesión si no existe
+                HttpSession session = request.getSession(true);
                 session.setAttribute("idUsuario", rs.getInt("id"));
                 session.setAttribute("matricula", rs.getString("matricula"));
                 session.setAttribute("nombre", rs.getString("nombre"));
                 session.setAttribute("apellidos", rs.getString("apellidos"));
                 session.setAttribute("correo", rs.getString("correo"));
-                session.setAttribute("rol", rs.getString("rol"));
+                
+                String rol = rs.getString("rol");
+                session.setAttribute("rol", rol);
 
-                // Redirige a perfil.jsp (JSP porque lee session)
-                response.sendRedirect("principal.html");
+                // --- LÓGICA DE REDIRECCIÓN MODIFICADA ---
+                if ("Administrador".equals(rol)) {
+                    // Si es admin, va directo a su perfil (panel de control)
+                    response.sendRedirect("perfil.jsp");
+                } else {
+                    // Si es alumno/profesor, va al menú principal
+                    response.sendRedirect("principal.html");
+                }
+                // ----------------------------------------
+
             } else {
                 response.sendRedirect("index.html?error=invalid");
             }

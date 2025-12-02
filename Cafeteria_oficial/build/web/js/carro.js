@@ -145,7 +145,7 @@ function cargarPedidos() {
             <div style="font-weight:bold">${truncate(p.nombres || p.primer_producto_nombre || 'Pedido', 30)}</div>
             <div style="font-size:12px;color:#666">${p.fecha}</div>
           </div>
-          <a class="estado-btn" href="detalle_pedido.html?id=${p.id_pedido}">
+          <a class="estado-btn" href="detalle_pedido.html?id=${p.id_pedido}&origen=carrito">
             <button class="estado ${estadoClass(p.estado)}">${p.estado}</button>
           </a>
         `;

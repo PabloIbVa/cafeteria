@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #90c586;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* --- HEADER --- */
+.container-nav {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.logo {
+    color: #00341c;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-icons img { width: 24px; cursor: pointer; }
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    flex: 1;
+    max-width: 1000px; /* Un poco más estrecho que alimentos para enfoque central */
+    width: 95%;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.45);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.page-title {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* BUSCADOR */
+.search-bar-container input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* LISTA DE PEDIDOS */
+.list-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar */
+.list-container::-webkit-scrollbar { width: 8px; }
+.list-container::-webkit-scrollbar-track { background: transparent; }
+.list-container::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
+
+/* --- TARJETA DE PEDIDO --- */
+.pedido-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    flex-wrap: wrap; /* Para móviles */
+}
+
+/* Imagen con el tache (X) del boceto simulada con borde */
+.img-box {
+    width: 80px;
+    height: 80px;
+    background: #f9f9f9;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información central */
+.info-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 200px;
+}
+
+.pedido-id {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.pedido-usuario {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+}
+
+.pedido-desc {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+    background: #f0f0f0; /* Fondo grisecito para el texto como en el boceto */
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Controles Derecha */
+.action-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select.estado-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-actualizar {
+    padding: 8px 16px;
+    background-color: #90c586; /* Verde suave */
+    border: 1px solid #5e9e54;
+    color: #00341c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-actualizar:hover {
+    background-color: #7ab370;
+}
+
+/* Footer & Links */
+.footer-actions { margin-top: 10px; }
+.link-regresar {
+    color: #2b79ff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer {
+    background: #5e9e54;
+    padding: 20px;
+    margin-top: auto;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    z-index: 10;
+}
+footer p { margin: 0; font-size: 0.9rem; }

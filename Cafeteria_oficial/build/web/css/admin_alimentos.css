@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #90c586;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* --- HEADER --- */
+.container-nav {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+header { background: none; }
+
+.navbar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #00341c;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-icons img {
+    width: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    flex: 1;
+    max-width: 1200px;
+    width: 95%;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.45);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* --- BUSCADOR --- */
+.search-bar-container {
+    width: 100%;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Layout de dos columnas */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+    overflow: hidden; 
+    min-height: 0;
+}
+
+/* IZQUIERDA: Formulario */
+.form-panel {
+    flex: 0 0 350px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    
+    /* CORRECCIÓN: Ocultar la barra de scroll visualmente */
+    overflow-y: auto; /* Mantiene el scroll funcional */
+    scrollbar-width: none; /* Firefox: oculta la barra */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* Ocultar barra en Chrome/Safari/Opera */
+.form-panel::-webkit-scrollbar {
+    display: none;
+}
+
+.form-panel h2 { margin-top: 0; color: #444; font-size: 1.3rem; }
+
+.form-panel label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-panel input, .form-panel select, .form-panel textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.form-panel input:focus, .form-panel textarea:focus { 
+    border-color: #90c586; 
+    outline: none; 
+}
+
+.form-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-aplicar {
+    flex: 1;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-aplicar:hover { background: #000; }
+
+.btn-limpiar {
+    background: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* DERECHA: Lista */
+.list-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px; 
+}
+
+/* Scrollbar personalizada SOLO para la lista (derecha) */
+.list-panel::-webkit-scrollbar { width: 8px; }
+.list-panel::-webkit-scrollbar-track { background: transparent; }
+.list-panel::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
+
+.card {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.card.eliminado {
+    background: #f4f4f4;
+    opacity: 0.7;
+    border: 2px dashed #999;
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+}
+
+.card-info { flex: 1; }
+.card-info h3 { margin: 0; font-size: 1.1rem; color: #333; }
+.card-info p { margin: 4px 0; color: #666; font-size: 0.9rem; }
+.card-price { font-weight: bold; color: #222; }
+
+.status-text { font-size: 0.75rem; font-weight: bold; letter-spacing: 0.5px; }
+.status-activo { color: #27ae60; }
+.status-eliminado { color: #c0392b; }
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-modificar, .btn-eliminar, .btn-agregar {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    width: 100px;
+    transition: all 0.2s;
+}
+
+.btn-modificar:hover { background: #333; color: #fff; }
+.btn-eliminar:hover { background: #c0392b; border-color: #c0392b; color: #fff; }
+.btn-agregar { background: #e8f5e9; border-color: #27ae60; color: #27ae60; }
+.btn-agregar:hover { background: #27ae60; color: #fff; }
+
+.footer-actions {
+    margin-top: 10px;
+}
+.link-regresar {
+    color: #333;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    background: #5e9e54;
+    padding: 20px;
+    margin-top: auto;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    position: relative; 
+    z-index: 10;
+}
+
+footer p { margin: 0; font-size: 0.9rem; }

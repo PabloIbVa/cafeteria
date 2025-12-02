@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (origen === "perfil") {
             // Si venimos del perfil, regresamos a perfil.jsp
             btnRegresar.href = "perfil.jsp";
-            btnRegresar.innerText = "← Regresar al Perfil";
+            btnRegresar.innerText = "Regresar";
         } else {
             // Caso por defecto (o si viene del carrito): regresamos a carro.html
             btnRegresar.href = "carro.html";
-            btnRegresar.innerText = "← Regresar al Carrito";
+            btnRegresar.innerText = "Regresar";
         }
     }
 

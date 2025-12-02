@@ -227,4 +227,51 @@ public class PedidoDAO {
         }
         return lista;
     }
+    
+    public List<Map<String, Object>> listarPedidosAdmin() throws Exception {
+        List<Map<String, Object>> lista = new ArrayList<>();
+        Connection con = ConexionBD.getConnection();
+        
+        // Esta consulta es CLAVE:
+        // 1. Une con Usuarios para sacar el nombre.
+        // 2. Subconsulta para sacar la primera imagen.
+        // 3. Subconsulta GROUP_CONCAT para sacar los nombres de los productos en una sola cadena.
+        // 4. ORDER BY FIELD para el orden personalizado: Pendiente -> Preparando -> Listo -> Entregado -> Cancelado.
+        String sql = """
+            SELECT p.id_pedido, p.estado, p.precio_total, 
+                   u.nombre as nombre_usuario, u.apellidos as apellidos_usuario,
+                   (SELECT pr.src FROM detalle_pedidos dp JOIN productos pr ON dp.id_producto = pr.id_producto WHERE dp.id_pedido = p.id_pedido LIMIT 1) as img,
+                   (SELECT GROUP_CONCAT(pr.nombre SEPARATOR ', ') FROM detalle_pedidos dp JOIN productos pr ON dp.id_producto = pr.id_producto WHERE dp.id_pedido = p.id_pedido) as descripcion
+            FROM pedidos p
+            JOIN usuarios u ON p.id_usuario = u.id
+            ORDER BY FIELD(p.estado, 'pendiente', 'preparando', 'listo', 'entregado', 'cancelado'), p.id_pedido ASC
+        """;
+
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            Map<String, Object> fila = new HashMap<>();
+            fila.put("id_pedido", rs.getInt("id_pedido"));
+            fila.put("estado", rs.getString("estado"));
+            fila.put("total", rs.getDouble("precio_total"));
+            fila.put("usuario", rs.getString("nombre_usuario") + " " + rs.getString("apellidos_usuario"));
+            fila.put("img", rs.getString("img"));
+            fila.put("descripcion", rs.getString("descripcion"));
+            lista.add(fila);
+        }
+        con.close();
+        return lista;
+    }
+
+    // 2. ACTUALIZAR ESTADO DEL PEDIDO
+    public void actualizarEstadoPedido(int idPedido, String nuevoEstado) throws Exception {
+        Connection con = ConexionBD.getConnection();
+        String sql = "UPDATE pedidos SET estado = ? WHERE id_pedido = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, nuevoEstado);
+        ps.setInt(2, idPedido);
+        ps.executeUpdate();
+        con.close();
+    }
 }

@@ -226,20 +226,60 @@ footer {
     color: #fff;
 }
 
-/* --- RESPONSIVE --- */
+.admin-panel {
+    flex: 1; 
+    background: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    justify-content: center; /* Centrar contenido verticalmente */
+}
+
+.admin-panel h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.admin-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre botones */
+    width: 100%;
+    align-items: center;
+}
+
+.btn-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Ancho de los botones */
+    padding: 20px;
+    background-color: #2c3e50; /* Color oscuro profesional */
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-admin:hover {
+    background-color: #34495e;
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsivo para el panel admin */
 @media (max-width: 900px) {
-    .perfil-wrapper {
-        flex-direction: column; /* En tablet/móvil, uno arriba del otro */
+    .admin-panel {
+        width: 100%;
         height: auto;
-    }
-    .perfil-info { 
-        width: 100%; 
-        border-right: none; 
-        border-bottom: 1px solid #ddd;
-    }
-    .historial-compras { 
-        width: 100%; 
-        height: auto;
-        max-height: 500px; /* Límite en móvil */
+        min-height: 300px;
     }
 }
