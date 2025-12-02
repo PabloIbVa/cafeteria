@@ -50,12 +50,12 @@ header {
 }
 
 .perfil-info{
+    flex: 0 0 60%; /* ocupa el 60% del ancho del contenedor */
     background: #a8a8a8; /* caja gris */
     padding: 28px;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px ;
     max-width: 480px;
     width: 100%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -98,6 +98,28 @@ header {
     transition: background .15s ease, transform .08s ease;
 }
 .btn-logout:hover{ background: #a23124}
+
+.historial-compras {
+    /* igual tamaño y estilo base que .perfil-info */
+    flex: 0 0 60%;
+    background: #a8a8a8;
+    padding: 28px;
+    border-radius: 0 12px 12px 0; /* esquinas opuestas para contraste */
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    border-left: 2px solid #000;
+    padding-left: 24px;
+}
+
+.historial-compras h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
 
 footer {
     background: #5e9e54;
