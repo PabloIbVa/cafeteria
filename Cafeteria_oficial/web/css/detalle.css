@@ -1,65 +1,79 @@
-/* Heredamos estilos básicos de tu estilos.css, aquí solo lo específico */
+/* ==== DETALLE (Página de Pedido / Vista Detallada) ==== */
 
+/* Fondo general */
 body {
-    background-color: #a5d6a7; /* Fondo verde claro según boceto */
+    background-color: #B7E1C0; /* Verde suave consistente */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
- .container-header { width: 95%; max-width: 1200px; margin: 0 auto; background: transparent;}
+/* Contenedor del header */
+.container-header { 
+    width: 95%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    background: transparent;
+}
 
-/* Contenedor principal centrado "tarjeta blanca" */
+/* Tarjeta principal */
 .container-detalle {
-    background-color: #f5f5f5; /* Fondo gris muy claro casi blanco */
+    background-color: #ffffff;
     max-width: 900px;
     margin: 40px auto;
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
+/* Título */
 h1 {
     text-align: center;
-    color: #333;
+    color: #2F4635;
     margin-bottom: 40px;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
 }
 
-/* Layout de dos columnas */
+/* Layout dos columnas */
 .detalle-layout {
     display: flex;
     gap: 40px;
     margin-bottom: 30px;
 }
 
+/* Columna izquierda */
 .lista-productos {
-    flex: 2; /* Ocupa más espacio (izquierda) */
+    flex: 2;
 }
 
+/* Columna derecha */
 .resumen-info {
-    flex: 1; /* Ocupa menos espacio (derecha) */
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding-top: 10px;
 }
 
-/* Estilo de cada item de producto (Barra gris) */
+/* Item gris */
 .item-detalle {
-    background-color: #cccccc; /* Gris del boceto */
+    background-color: #E0E0E0;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-/* Cuadro de imagen con la X (borde negro) */
+/* Caja de imagen */
 .img-container {
     width: 70px;
     height: 70px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 2px solid #2F4635;
+    border-radius: 4px;
     margin-right: 20px;
     display: flex;
     align-items: center;
@@ -72,20 +86,23 @@ h1 {
     object-fit: cover;
 }
 
+/* Nombre del producto */
 .nombre-prod {
     flex: 1;
     font-size: 1.1rem;
-    font-weight: 500;
-    color: #333;
+    font-weight: 600;
+    color: #2F4635;
 }
 
+/* Cantidad */
 .cant-prod {
     font-weight: bold;
     font-size: 1.1rem;
     padding-right: 20px;
+    color: #1F2F24;
 }
 
-/* Estilos de la derecha (Resumen) */
+/* Resumen derecha */
 .fila-resumen {
     display: flex;
     justify-content: space-between;
@@ -95,31 +112,45 @@ h1 {
 .fila-resumen span:first-child {
     font-weight: bold;
     font-size: 1.1rem;
-    color: #444;
+    color: #2F4635;
 }
 
 .valor-grande {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1F2F24;
 }
 
 .valor-medio {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
-/* Botón Regresar */
+/* Link regresar */
 .link-regresar {
     display: inline-block;
-    color: #2b79ff;
+    color: #3578E5;
     text-decoration: underline;
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 10px;
 }
 
-/* Responsivo para celulares */
+.link-regresar:hover {
+    color: #245FCC;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
     .detalle-layout {
         flex-direction: column;
+    }
+
+    .container-detalle {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
     }
 }
