@@ -33,19 +33,22 @@
 </div>
 
   <div class="perfil-container">
-    <div class="perfil-info">
-      <img src="img/user.png" class="avatar" alt="avatar">
-      <h2><%= session.getAttribute("nombre") %> <%= session.getAttribute("apellidos") %></h2>
-      <p><strong>Correo:</strong> <%= session.getAttribute("correo") %></p>
-      <p><strong>Estatus:</strong> <%= session.getAttribute("rol") %></p>
+    <div class="perfil-wrapper">
+        
+        <div class="perfil-info">
+            <img src="img/user.png" class="avatar" alt="avatar">
+            <h2><%= session.getAttribute("nombre") %> <%= session.getAttribute("apellidos") %></h2>
+            <p><strong>Correo:</strong> <%= session.getAttribute("correo") %></p>
+            <p><strong>Estatus:</strong> <%= session.getAttribute("rol") %></p>
+            <a class="btn-logout" href="LogoutServlet">Cerrar Sesión</a>
+        </div>
 
-      <a class="btn-logout" href="LogoutServlet">Cerrar Sesión</a>
-    </div>
-    <br>
-    <div class="historial-compras">
-      <h3>Historial de compras</h3>
-      <div id="contenedorPedidos"></div>
-    </div>
+        <div class="historial-compras">
+            <h3>Historial de compras</h3>
+            <div id="contenedorPedidos"></div>
+        </div>
+
+    </div> 
   </div>
   <footer>
         <p>© 2025 Cafetería Universitaria - Todos los derechos reservados</p>

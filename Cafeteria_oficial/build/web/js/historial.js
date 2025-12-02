@@ -1,72 +1,81 @@
-// Carga y muestra los últimos 3 pedidos
-document.addEventListener("DOMContentLoaded", () => {
-    if (document.getElementById("contenedorPedidos")) {
-        cargarUltimosPedidos();
-    }
-});
+document.addEventListener("DOMContentLoaded", cargarHistorial);
 
-function cargarUltimosPedidos() {
-    fetch("UltimosPedidos?limit=3")
-        .then(r => r.json())
-        .then(data => mostrarPedidos(data))
-        .catch(() => {
+function cargarHistorial() {
+    // Pedimos 50 pedidos para el historial del perfil
+    // Nota: Llama a ListarPedidosUsuarioServlet, que es el que ya tienes funcionando
+    fetch("ListarPedidosUsuarioServlet?limit=50")
+        .then(res => {
+            if (res.status === 401) {
+                // Si la sesión expiró, redirigir al login
+                window.location.href = "index.html"; 
+                return;
+            }
+            if (!res.ok) throw new Error("Error al cargar historial");
+            return res.json();
+        })
+        .then(data => {
+            mostrarPedidos(data);
+        })
+        .catch(err => {
+            console.error(err);
             const cont = document.getElementById("contenedorPedidos");
-            if (cont) cont.innerHTML = "<p>No se pudieron cargar los pedidos.</p>";
+            if(cont) cont.innerHTML = "<p>No se pudieron cargar los pedidos.</p>";
         });
 }
 
 function mostrarPedidos(lista) {
     const cont = document.getElementById("contenedorPedidos");
-    if (!cont) return;
+    if (!cont) return; // Protección por si no existe el div
     cont.innerHTML = "";
 
     if (!lista || lista.length === 0) {
-        cont.innerHTML = "<p>No hay pedidos recientes.</p>";
+        cont.innerHTML = "<p>No has realizado compras aún.</p>";
         return;
     }
 
     lista.forEach(p => {
-        const fecha = p.fecha ? new Date(p.fecha).toLocaleString("es-ES") : "—";
-        const estado = p.estado ? `<span class="estado">${escapeHtml(p.estado)}</span>` : "";
-        const total = typeof p.total === "number" ? `$${p.total.toFixed(2)}` : (p.total || "—");
-
-        // items si vienen
-        let itemsHTML = "";
-        if (Array.isArray(p.items) && p.items.length) {
-            itemsHTML = `<ul class="pedido-items">
-                ${p.items.map(i =>
-                    `<li class="item">
-                        ${i.src ? `<img src="${escapeAttr(i.src)}" alt="img" class="mini">` : ""}
-                        <span class="item-nombre">${escapeHtml(i.nombre || "")}</span>
-                        <span class="item-cant">x${i.cantidad || 1}</span>
-                        <span class="item-precio">$${(i.precio||0).toFixed(2)}</span>
-                    </li>`
-                ).join("")}
-            </ul>`;
-        } else {
-            itemsHTML = `<p class="pedido-resumen">${escapeHtml(p.resumen || "Pedido sin detalles")}</p>`;
-        }
-
-        cont.innerHTML += `
-            <div class="pedido-card">
-                <div class="pedido-header">
-                    <strong>Pedido #${escapeHtml(String(p.id || "—"))}</strong>
-                    <small class="fecha">${fecha}</small>
-                    ${estado}
+        // Creamos la tarjeta del pedido con la clase 'pedido-item' que definimos en el CSS
+        const div = document.createElement("div");
+        div.className = "pedido-item";
+        
+        // Generamos el HTML: Imagen, Info y Botón de Estado que lleva al detalle
+        div.innerHTML = `
+            <img src="${p.primer_producto_img || 'src/principal/sin_imagen.png'}" alt="Producto">
+            
+            <div class="pedido-info">
+                <div class="pedido-titulo">
+                    ${truncate(p.nombres || p.primer_producto_nombre || 'Pedido', 40)}
                 </div>
-                ${itemsHTML}
-                <div class="pedido-footer">
-                    <span class="total">Total: <strong>${total}</strong></span>
+                <div class="pedido-fecha">
+                    ${p.fecha} &bull; <strong>$${p.precio_total}</strong>
                 </div>
             </div>
+
+            <a class="estado-btn" href="detalle_pedido.html?id=${p.id_pedido}&origen=perfil">
+                <button class="estado ${estadoClass(p.estado)}">
+                    ${p.estado}
+                </button>
+            </a>
         `;
+        cont.appendChild(div);
     });
 }
 
-// utilidades simples para evitar inyecciones en strings
-function escapeHtml(text) {
-    return String(text || "").replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[s]);
+// --- Funciones de utilidad ---
+
+// Cortar texto si es muy largo
+function truncate(text, max) {
+    if (!text) return "";
+    return text.length > max ? text.substring(0, max - 3) + "..." : text;
 }
-function escapeAttr(text) {
-    return escapeHtml(text).replace(/"/g, "&quot;");
+
+// Asignar color según el estado (coincide con tu CSS)
+function estadoClass(estado) {
+    estado = (estado || "").toLowerCase();
+    if (estado === "pendiente") return "pendiente";
+    if (estado === "preparando") return "preparado";
+    if (estado === "listo") return "listo";
+    if (estado === "entregado") return "entregado";
+    if (estado === "cancelado") return "cancelado";
+    return "pendiente";
 }

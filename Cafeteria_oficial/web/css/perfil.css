@@ -12,9 +12,10 @@ body {
     min-height: 100vh;
 }
 
+/* Header y Navbar */
 .container {
     width: 95%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     background: transparent;
 }
@@ -29,6 +30,7 @@ header { background: none; }
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 10px;
 }
 
 .navbar a {
@@ -43,146 +45,170 @@ header { background: none; }
     cursor: pointer;
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* --- CONTENEDOR PRINCIPAL DEL PERFIL --- */
 .perfil-container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Para que ambas cajas tengan la misma altura */
     padding: 40px 20px;
-    /* Ajustamos el ancho máximo para que se vea compacto */
-    max-width: 1000px; 
-    margin: 0 auto;
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 180px); /* Centrado vertical */
+    align-items: flex-start; /* Evita estiramientos raros si no hay contenido */
 }
 
-/* --- CAJA IZQUIERDA: INFO USUARIO --- */
+/* Esta es la "Tarjeta Maestra" que une ambos lados */
+.perfil-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Hacemos la tarjeta más ancha */
+    background: #fff;
+    border-radius: 20px; /* Borde redondeado unificado */
+    overflow: hidden; /* Asegura que los hijos no se salgan del borde */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra elegante */
+    min-height: 550px; /* Altura mínima para que no se vea aplastado */
+}
+
+/* --- LADO IZQUIERDO: INFO USUARIO (Gris) --- */
 .perfil-info {
-    flex: 0 0 35%; /* Ocupa el 35% */
-    background: #f0f0f0; /* Un gris más claro se ve mejor */
-    padding: 30px;
-    border-radius: 12px 0 0 12px;
+    flex: 0 0 30%; /* Ocupa el 30% del ancho */
+    background: #f0f0f0; 
+    padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 15px;
     align-items: center;
-    justify-content: center; /* Centrado vertical */
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    justify-content: flex-start; 
+    border-right: 1px solid #ddd; /* Línea sutil divisora */
 }
 
 .perfil-info .avatar {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     object-fit: cover;
-    border-radius: 50%; /* Hacemos el avatar redondo */
-    border: 4px solid #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-.perfil-info h2 { color: #222; margin: 0; }
-.perfil-info p { color: #555; margin: 0; }
+.perfil-info h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.perfil-info p {
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.perfil-info p strong { color: #333; }
+
 .btn-logout {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 30px;
+    padding: 12px 30px;
     background: #c0392b;
     color: #fff;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-weight: bold;
     transition: 0.3s;
+    width: 80%; /* Botón más ancho */
 }
-.btn-logout:hover { background: #a23124; }
+.btn-logout:hover { background: #a23124; transform: translateY(-2px);}
 
-/* --- CAJA DERECHA: HISTORIAL --- */
+/* --- LADO DERECHO: HISTORIAL (Blanco) --- */
 .historial-compras {
-    flex: 0 0 65%; /* Ocupa el resto (65%) */
-    background: #ffffff; /* Fondo blanco para resaltar pedidos */
-    padding: 30px;
-    border-radius: 0 12px 12px 0;
+    flex: 1; /* Ocupa todo el espacio restante (70%) */
+    background: #ffffff;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    /* SCROLL MAGICO AQUI: */
-    max-height: 500px; /* Altura fija */
-    overflow-y: auto;  /* Scroll vertical si se pasa */
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    height: 100%; /* Forza a llenar la altura del wrapper */
 }
 
 .historial-compras h3 {
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-    position: sticky; /* El título se queda fijo al hacer scroll */
-    top: 0;
-    background: #fff;
-    z-index: 10;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-/* Estilos de la Scrollbar (Chrome/Safari) */
-.historial-compras::-webkit-scrollbar { width: 8px; }
-.historial-compras::-webkit-scrollbar-track { background: #f1f1f1; }
-.historial-compras::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-.historial-compras::-webkit-scrollbar-thumb:hover { background: #555; }
-
-/* --- ESTILOS DE LOS PEDIDOS (Igual que Carrito) --- */
+/* Área scrollable SOLO para la lista de pedidos */
 #contenedorPedidos {
-    width: 100%;
+    flex: 1; /* Toma el espacio disponible verticalmente */
+    overflow-y: auto; /* Scroll si hay muchos pedidos */
+    max-height: 600px; /* Límite de altura interna */
+    padding-right: 10px; /* Espacio para el scrollbar */
 }
 
+/* Estilos del Scrollbar */
+#contenedorPedidos::-webkit-scrollbar { width: 8px; }
+#contenedorPedidos::-webkit-scrollbar-track { background: #f9f9f9; }
+#contenedorPedidos::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+#contenedorPedidos::-webkit-scrollbar-thumb:hover { background: #999; }
+
+/* --- ITEMS DEL PEDIDO --- */
 .pedido-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    background: #f9f9f9;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #eee;
-    transition: transform 0.2s;
+    gap: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #eee; /* Borde suave */
+    transition: all 0.2s ease;
 }
 
 .pedido-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    border-color: #bbb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .pedido-item img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
 }
 
 .pedido-info {
     flex: 1;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .pedido-titulo {
-    font-weight: bold;
+    font-weight: 700;
     color: #333;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
+    font-size: 1rem;
 }
 
 .pedido-fecha {
-    font-size: 0.8rem;
-    color: #777;
+    font-size: 0.85rem;
+    color: #888;
 }
 
-.estado-btn {
-    text-decoration: none;
+.pedido-fecha strong {
+    color: #27ae60;
+    margin-left: 5px;
 }
+
+.estado-btn { text-decoration: none; }
 
 .estado {
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 8px 16px;
+    border-radius: 30px;
     font-size: 0.8rem;
     color: white;
     font-weight: bold;
     border: none;
     cursor: pointer;
     text-transform: capitalize;
+    min-width: 100px;
 }
 
 /* Colores de estado */
@@ -190,7 +216,7 @@ header { background: none; }
 .preparado { background: #3498db; }
 .listo { background: #27ae60; }
 .entregado { background: #2c3e50; }
-.cancelado { background: #c0392b; }
+.cancelado { background: #e74c3c; }
 
 footer {
     background: #5e9e54;
@@ -200,9 +226,20 @@ footer {
     color: #fff;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .perfil-container { flex-direction: column; align-items: center; }
-    .perfil-info, .historial-compras { flex: 1; width: 100%; border-radius: 12px; margin-bottom: 20px; }
-    .historial-compras { max-height: none; } /* En móvil quitamos altura fija */
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .perfil-wrapper {
+        flex-direction: column; /* En tablet/móvil, uno arriba del otro */
+        height: auto;
+    }
+    .perfil-info { 
+        width: 100%; 
+        border-right: none; 
+        border-bottom: 1px solid #ddd;
+    }
+    .historial-compras { 
+        width: 100%; 
+        height: auto;
+        max-height: 500px; /* Límite en móvil */
+    }
 }
