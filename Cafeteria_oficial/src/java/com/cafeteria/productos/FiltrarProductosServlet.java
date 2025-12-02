@@ -25,7 +25,7 @@ public class FiltrarProductosServlet extends HttpServlet {
         String area = request.getParameter("area");
         String precio = request.getParameter("precio");
         String tiempo = request.getParameter("tiempo");
-        String search = request.getParameter("search");
+        String search = request.getParameter("buscar");
 
         double precioMax = (precio != null && !precio.equals("")) ? Double.parseDouble(precio) : 0;
         int tiempoMax = (tiempo != null && !tiempo.equals("")) ? Integer.parseInt(tiempo) : 0;

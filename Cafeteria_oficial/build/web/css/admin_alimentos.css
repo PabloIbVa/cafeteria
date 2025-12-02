@@ -1,29 +1,43 @@
+/* ==== RESET Y VARIABLES ==== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --color-bg: #e6f2de;
+    --color-primary: #6fbf73;
+    --color-primary-dark: #5aa760;
+    --color-primary-light: #dff2d8;
+
+    --color-text-main: #2a2a2a;
+    --color-text-soft: #555;
+    --color-text-light: #777;
+
+    --color-white: #ffffff;
+    --color-gray-light: #ddd;
+    --color-gray: #bbb;
+    --color-gray-dark: #444;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #90c586;
+    background-color: var(--color-bg);
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-/* --- HEADER --- */
+/* ==== NAVBAR ==== */
 .container-nav {
     width: 95%;
     max-width: 1400px;
     margin: 0 auto;
-    background: transparent;
 }
 
-header { background: none; }
-
 .navbar {
-    background: #ffffff;
+    background: var(--color-white);
     border-radius: 15px;
     padding: 15px 25px;
     display: flex;
@@ -34,8 +48,7 @@ header { background: none; }
 }
 
 .logo {
-    text-decoration: none;
-    color: #00341c;
+    color: var(--color-primary-dark);
     font-weight: bold;
     font-size: 1.1rem;
 }
@@ -46,90 +59,84 @@ header { background: none; }
     cursor: pointer;
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* ==== MAIN CONTAINER ==== */
 .main-container {
     flex: 1;
     max-width: 1200px;
     width: 95%;
     margin: 20px auto;
-    background: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.5);
     border-radius: 15px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow: hidden;
 }
 
-/* --- BUSCADOR --- */
-.search-bar-container {
-    width: 100%;
-}
-
+/* ==== BUSCADOR ==== */
 .search-bar-container input {
     width: 100%;
     padding: 12px 20px;
     border-radius: 25px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray-light);
     font-size: 1rem;
     outline: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: var(--color-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
-/* Layout de dos columnas */
+/* ==== LAYOUT PRINCIPAL ==== */
 .content-wrapper {
     display: flex;
     gap: 30px;
     flex: 1;
-    overflow: hidden; 
-    min-height: 0;
 }
 
-/* IZQUIERDA: Formulario */
+/* === FORM PANEL === */
 .form-panel {
     flex: 0 0 350px;
-    background: #fff;
+    background: var(--color-white);
     padding: 25px;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    
-    /* CORRECCIÓN: Ocultar la barra de scroll visualmente */
-    overflow-y: auto; /* Mantiene el scroll funcional */
-    scrollbar-width: none; /* Firefox: oculta la barra */
-    -ms-overflow-style: none;  /* IE and Edge */
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
-/* Ocultar barra en Chrome/Safari/Opera */
-.form-panel::-webkit-scrollbar {
-    display: none;
-}
+.form-panel::-webkit-scrollbar { display: none; }
 
-.form-panel h2 { margin-top: 0; color: #444; font-size: 1.3rem; }
+.form-panel h2 {
+    margin-top: 0;
+    color: var(--color-gray-dark);
+    font-size: 1.3rem;
+}
 
 .form-panel label {
-    display: block;
     margin-top: 12px;
     font-weight: bold;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--color-text-soft);
 }
 
-.form-panel input, .form-panel select, .form-panel textarea {
+.form-panel input,
+.form-panel select,
+.form-panel textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--color-gray-light);
     border-radius: 6px;
-    font-family: inherit;
+    background: var(--color-white);
 }
 
-.form-panel input:focus, .form-panel textarea:focus { 
-    border-color: #90c586; 
-    outline: none; 
+.form-panel input:focus,
+.form-panel textarea:focus {
+    border-color: var(--color-primary);
 }
 
+/* ==== BOTONES FORMULARIO ==== */
 .form-buttons {
     margin-top: 20px;
     display: flex;
@@ -138,71 +145,76 @@ header { background: none; }
 
 .btn-aplicar {
     flex: 1;
-    background: #333;
-    color: #fff;
+    background: var(--color-primary-dark);
+    color: var(--color-white);
     padding: 10px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.2s;
 }
-.btn-aplicar:hover { background: #000; }
+.btn-aplicar:hover { background: var(--color-primary); }
 
 .btn-limpiar {
-    background: #ccc;
-    color: #333;
+    background: var(--color-gray);
+    color: var(--color-white);
     border: none;
     border-radius: 6px;
     padding: 10px;
     cursor: pointer;
 }
 
-/* DERECHA: Lista */
+/* ==== LISTA DERECHA ==== */
 .list-panel {
     flex: 1;
     overflow-y: auto;
-    padding-right: 5px; 
 }
 
-/* Scrollbar personalizada SOLO para la lista (derecha) */
 .list-panel::-webkit-scrollbar { width: 8px; }
-.list-panel::-webkit-scrollbar-track { background: transparent; }
-.list-panel::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
+.list-panel::-webkit-scrollbar-thumb {
+    background: var(--color-gray);
+    border-radius: 4px;
+}
 
 .card {
-    background: #fff;
+    background: var(--color-white);
+    padding: 15px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    padding: 15px;
-    border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
+    border: 1px solid var(--color-gray-light);
 }
 
 .card.eliminado {
     background: #f4f4f4;
-    opacity: 0.7;
-    border: 2px dashed #999;
+    opacity: 0.75;
+    border: 2px dashed var(--color-gray-dark);
 }
 
 .card img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-light);
     margin-right: 20px;
 }
 
-.card-info { flex: 1; }
-.card-info h3 { margin: 0; font-size: 1.1rem; color: #333; }
-.card-info p { margin: 4px 0; color: #666; font-size: 0.9rem; }
-.card-price { font-weight: bold; color: #222; }
+.card-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+}
 
-.status-text { font-size: 0.75rem; font-weight: bold; letter-spacing: 0.5px; }
-.status-activo { color: #27ae60; }
+.card-info p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.status-activo { color: var(--color-primary-dark); }
 .status-eliminado { color: #c0392b; }
 
 .card-actions {
@@ -214,39 +226,37 @@ header { background: none; }
 .btn-modificar, .btn-eliminar, .btn-agregar {
     padding: 6px 12px;
     border-radius: 6px;
-    border: 1px solid #333;
-    background: #fff;
+    border: 1px solid var(--color-primary-dark);
+    background: var(--color-white);
     cursor: pointer;
     font-weight: bold;
     font-size: 0.85rem;
-    width: 100px;
-    transition: all 0.2s;
 }
 
-.btn-modificar:hover { background: #333; color: #fff; }
-.btn-eliminar:hover { background: #c0392b; border-color: #c0392b; color: #fff; }
-.btn-agregar { background: #e8f5e9; border-color: #27ae60; color: #27ae60; }
-.btn-agregar:hover { background: #27ae60; color: #fff; }
-
-.footer-actions {
-    margin-top: 10px;
-}
-.link-regresar {
-    color: #333;
-    font-weight: bold;
-    text-decoration: underline;
+.btn-modificar:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
 }
 
-/* FOOTER */
+.btn-eliminar:hover {
+    background: #c0392b;
+    color: var(--color-white);
+    border-color: #c0392b;
+}
+
+.btn-agregar {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+.btn-agregar:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+/* ==== FOOTER ==== */
 footer {
-    background: #5e9e54;
+    background: var(--color-primary-dark);
     padding: 20px;
-    margin-top: auto;
     text-align: center;
-    color: #fff;
-    width: 100%;
-    position: relative; 
-    z-index: 10;
+    color: var(--color-white);
 }
-
-footer p { margin: 0; font-size: 0.9rem; }

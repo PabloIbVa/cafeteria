@@ -1,9 +1,11 @@
+/* Reset general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --- BODY --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #90c586;
@@ -12,7 +14,7 @@ body {
     min-height: 100vh;
 }
 
-/* Header y Navbar */
+/* --- CONTENEDORES GENERALES --- */
 .container {
     width: 95%;
     max-width: 1400px;
@@ -20,8 +22,11 @@ body {
     background: transparent;
 }
 
-header { background: none; }
+header {
+    background: none;
+}
 
+/* --- NAVBAR --- */
 .navbar {
     background: #ffffff;
     border-radius: 15px;
@@ -50,33 +55,32 @@ header { background: none; }
     display: flex;
     justify-content: center;
     padding: 40px 20px;
-    min-height: calc(100vh - 180px); /* Centrado vertical */
-    align-items: flex-start; /* Evita estiramientos raros si no hay contenido */
+    min-height: calc(100vh - 180px);
+    align-items: flex-start;
 }
 
-/* Esta es la "Tarjeta Maestra" que une ambos lados */
+/* Tarjeta completa */
 .perfil-wrapper {
     display: flex;
     width: 100%;
-    max-width: 1200px; /* Hacemos la tarjeta más ancha */
+    max-width: 1200px;
     background: #fff;
-    border-radius: 20px; /* Borde redondeado unificado */
-    overflow: hidden; /* Asegura que los hijos no se salgan del borde */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra elegante */
-    min-height: 550px; /* Altura mínima para que no se vea aplastado */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    min-height: 550px;
 }
 
-/* --- LADO IZQUIERDO: INFO USUARIO (Gris) --- */
+/* --- COLUMNA IZQUIERDA (perfil) --- */
 .perfil-info {
-    flex: 0 0 30%; /* Ocupa el 30% del ancho */
-    background: #f0f0f0; 
+    flex: 0 0 30%;
+    background: #f0f0f0;
     padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; 
-    border-right: 1px solid #ddd; /* Línea sutil divisora */
+    border-right: 1px solid #ddd;
 }
 
 .perfil-info .avatar {
@@ -101,8 +105,11 @@ header { background: none; }
     font-size: 0.95rem;
 }
 
-.perfil-info p strong { color: #333; }
+.perfil-info p strong {
+    color: #333;
+}
 
+/* Botón Logout */
 .btn-logout {
     margin-top: 30px;
     padding: 12px 30px;
@@ -112,18 +119,22 @@ header { background: none; }
     border-radius: 8px;
     font-weight: bold;
     transition: 0.3s;
-    width: 80%; /* Botón más ancho */
+    width: 80%;
 }
-.btn-logout:hover { background: #a23124; transform: translateY(-2px);}
 
-/* --- LADO DERECHO: HISTORIAL (Blanco) --- */
+.btn-logout:hover {
+    background: #a23124;
+    transform: translateY(-2px);
+}
+
+/* --- COLUMNA DERECHA (Historial) --- */
 .historial-compras {
-    flex: 1; /* Ocupa todo el espacio restante (70%) */
+    flex: 1;
     background: #ffffff;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Forza a llenar la altura del wrapper */
+    height: 100%;
 }
 
 .historial-compras h3 {
@@ -134,21 +145,33 @@ header { background: none; }
     border-bottom: 2px solid #f0f0f0;
 }
 
-/* Área scrollable SOLO para la lista de pedidos */
+/* Contenedor scrollable */
 #contenedorPedidos {
-    flex: 1; /* Toma el espacio disponible verticalmente */
-    overflow-y: auto; /* Scroll si hay muchos pedidos */
-    max-height: 600px; /* Límite de altura interna */
-    padding-right: 10px; /* Espacio para el scrollbar */
+    flex: 1;
+    overflow-y: auto;
+    max-height: 600px;
+    padding-right: 10px;
 }
 
-/* Estilos del Scrollbar */
-#contenedorPedidos::-webkit-scrollbar { width: 8px; }
-#contenedorPedidos::-webkit-scrollbar-track { background: #f9f9f9; }
-#contenedorPedidos::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-#contenedorPedidos::-webkit-scrollbar-thumb:hover { background: #999; }
+/* Scrollbar */
+#contenedorPedidos::-webkit-scrollbar {
+    width: 8px;
+}
 
-/* --- ITEMS DEL PEDIDO --- */
+#contenedorPedidos::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+
+#contenedorPedidos::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+#contenedorPedidos::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Items */
 .pedido-item {
     display: flex;
     align-items: center;
@@ -157,7 +180,7 @@ header { background: none; }
     padding: 15px;
     border-radius: 12px;
     margin-bottom: 15px;
-    border: 1px solid #eee; /* Borde suave */
+    border: 1px solid #eee;
     transition: all 0.2s ease;
 }
 
@@ -171,7 +194,6 @@ header { background: none; }
     height: 70px;
     object-fit: cover;
     border-radius: 8px;
-    background: #f9f9f9;
 }
 
 .pedido-info {
@@ -194,10 +216,12 @@ header { background: none; }
 
 .pedido-fecha strong {
     color: #27ae60;
-    margin-left: 5px;
 }
 
-.estado-btn { text-decoration: none; }
+/* Botón estado */
+.estado-btn {
+    text-decoration: none;
+}
 
 .estado {
     padding: 8px 16px;
@@ -207,17 +231,18 @@ header { background: none; }
     font-weight: bold;
     border: none;
     cursor: pointer;
-    text-transform: capitalize;
     min-width: 100px;
+    text-transform: capitalize;
 }
 
-/* Colores de estado */
+/* Colores estado */
 .pendiente { background: #f39c12; }
 .preparado { background: #3498db; }
 .listo { background: #27ae60; }
 .entregado { background: #2c3e50; }
 .cancelado { background: #e74c3c; }
 
+/* Footer */
 footer {
     background: #5e9e54;
     padding: 20px;
@@ -226,14 +251,14 @@ footer {
     color: #fff;
 }
 
+/* Panel admin */
 .admin-panel {
-    flex: 1; 
+    flex: 1;
     background: #ffffff;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    justify-content: center; /* Centrar contenido verticalmente */
+    justify-content: center;
 }
 
 .admin-panel h3 {
@@ -248,38 +273,37 @@ footer {
 .admin-buttons-container {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espacio entre botones */
-    width: 100%;
+    gap: 20px;
     align-items: center;
 }
 
 .btn-admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%; /* Ancho de los botones */
+    width: 80%;
     padding: 20px;
-    background-color: #2c3e50; /* Color oscuro profesional */
+    background-color: #2c3e50;
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 12px;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: 0.2s;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-admin:hover {
     background-color: #34495e;
-    transform: translateY(-3px); /* Efecto de elevación */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
 }
 
-/* Responsivo para el panel admin */
+/* Responsivo */
 @media (max-width: 900px) {
-    .admin-panel {
+    .perfil-wrapper {
+        flex-direction: column;
+    }
+
+    .perfil-info {
         width: 100%;
-        height: auto;
-        min-height: 300px;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
     }
 }

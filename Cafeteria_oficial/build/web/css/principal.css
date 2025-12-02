@@ -7,21 +7,20 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #90c586; /* Color verde del background general */
+    background: #90c586;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; 
+    min-height: 100vh;
 }
 
-/* Contenedor general */
+/* CONTENEDOR GENERAL */
 .container {
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
-    background: transparent;
 }
 
-/* NAVBAR pegado y con bordes redondeados arriba */
+/* HEADER */
 header {
     background: none;
 }
@@ -47,17 +46,15 @@ header {
     cursor: pointer;
 }
 
-/* HERO ajustado al estilo del mockup */
+/* --- HERO --- */
 .hero {
     background: #d9d9d9;
     padding: 40px;
     display: flex;
     justify-content: space-between;
     border-radius: 0 0 10px 10px;
-    margin-top: 0;
 }
 
-/* Textos */
 .hero-info {
     width: 65%;
 }
@@ -65,10 +62,11 @@ header {
 .hero-image img {
     width: 240px;
     height: 240px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
-/* SECCIÓN DE CARACTERÍSTICAS */
+/* --- FEATURES --- */
 .features {
     display: flex;
     justify-content: space-between;
@@ -81,6 +79,7 @@ header {
     padding: 25px;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
 .feature-card img {
@@ -89,14 +88,13 @@ header {
     margin-bottom: 10px;
 }
 
-/* FOOTER BASE */
+/* FOOTER */
 footer {
     background: #5e9e54;
     padding: 40px;
     margin-top: auto;
     text-align: center;
     color: #fff;
-    position: relative;
     clear: both;
     z-index: 0;
 }

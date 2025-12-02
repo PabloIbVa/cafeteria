@@ -51,7 +51,6 @@
     <div class="perfil-wrapper">
         
         <div class="perfil-info">
-            <img src="img/user.png" class="avatar" alt="avatar">
             <h2><%= session.getAttribute("nombre") %> <%= session.getAttribute("apellidos") %></h2>
             <p><strong>Correo:</strong> <%= session.getAttribute("correo") %></p>
             <p><strong>Estatus:</strong> <%= session.getAttribute("rol") %></p>
