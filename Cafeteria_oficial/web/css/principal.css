@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #90c586;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #90c586; /* Fondo verde general */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -20,18 +20,23 @@ body {
     margin: 0 auto;
 }
 
-/* HEADER */
+/* HEADER Y NAVBAR */
 header {
     background: none;
 }
 
 .navbar {
     background: #ffffff;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
     padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    /* Separación del navbar con el contenido */
+    margin-bottom: 30px; 
+    margin-top: 15px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .navbar a {
@@ -46,55 +51,103 @@ header {
     cursor: pointer;
 }
 
-/* --- HERO --- */
+/* --- SECCIÓN HERO (Texto + Imagen Principal) --- */
 .hero {
-    background: #d9d9d9;
+    background: #ffffff; /* Fondo blanco */
     padding: 40px;
     display: flex;
     justify-content: space-between;
-    border-radius: 0 0 10px 10px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    
+    /* CORRECCIÓN: Margen abajo para no chocar con los iconos */
+    margin-bottom: 50px; 
 }
 
 .hero-info {
-    width: 65%;
+    width: 60%;
+}
+
+.hero-info h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.hero-info p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 .hero-image img {
-    width: 240px;
+    width: 300px;
     height: 240px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-/* --- FEATURES --- */
+/* --- TÍTULO "COMO FUNCIONA" --- */
+/* Estilo corregido: Oscuro y con espacio */
+h1 { 
+    text-align: center;
+    color: #00341c; /* Verde oscuro (el color del logo) */
+    margin-top: 20px;
+    margin-bottom: 40px; /* Separación con las tarjetas de abajo */
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* --- TARJETAS (FEATURES) --- */
 .features {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+    gap: 20px;
+    
+    /* CORRECCIÓN: Margen abajo para separar filas de features */
+    margin-bottom: 60px; 
 }
 
 .feature-card {
-    width: 30%;
+    flex: 1; 
     background: #ffffff;
-    padding: 25px;
+    padding: 30px 20px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
 }
 
 .feature-card img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.feature-card h3 {
     margin-bottom: 10px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 /* FOOTER */
 footer {
     background: #5e9e54;
-    padding: 40px;
+    padding: 30px;
     margin-top: auto;
     text-align: center;
     color: #fff;
     clear: both;
-    z-index: 0;
 }
