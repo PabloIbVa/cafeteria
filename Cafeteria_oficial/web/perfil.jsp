@@ -41,9 +41,15 @@
 
       <a class="btn-logout" href="LogoutServlet">Cerrar Sesión</a>
     </div>
+    <br>
+    <div class="historial-compras">
+      <h3>Historial de compras</h3>
+      <div id="contenedorPedidos"></div>
+    </div>
   </div>
   <footer>
         <p>© 2025 Cafetería Universitaria - Todos los derechos reservados</p>
   </footer>
+  <script src="js/historial.js"></script>
 </body>
 </html>
