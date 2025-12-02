@@ -21,7 +21,7 @@
                 <a href="busqueda.html">
                     <img src="src/principal/lupa.png" alt="Buscar">
                 </a>
-                <a href="carrito.html">
+                <a href="carro.html">
                     <img src="src/principal/carrito.png" alt="Carrito">
                 </a>
                 <a href="perfil.jsp">
