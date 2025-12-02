@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #e3f3d2;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+header {
+    background: none;
+}
+
+.navbar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00341c;
+    font-weight: bold;
+}
+
+.nav-icons img {
+    width: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.logo {
+    font-size: 22px;
+}
+
+.busqueda {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.busqueda input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.filtros {
+    background: white;
+    padding: 20px;
+    width: 220px;
+    border-radius: 15px;
+    margin-left: 20px;
+    float: left;
+    position: sticky; 
+    top: 5rem;        
+    max-height: calc(100vh - 7rem); 
+    overflow: auto;
+}
+
+article#contenedorProductos {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    margin-right: 20px;
+    background: #ccc;
+}
+
+.cantidad {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cantidad button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+footer {
+    background: #5e9e54;
+    padding: 40px;
+    margin-top: 50px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    clear: both;
+    z-index: 0;
+}

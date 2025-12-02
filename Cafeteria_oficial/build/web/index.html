@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Iniciar Sesión - Cafetería</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h2>Cafetería Universitaria</h2>
+      <h3>Inicia Sesión</h3>
+
+      <form action="LoginServlet" method="post">
+        <div class="input-group">
+          <input type="email" name="correo" placeholder="Correo" required>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn-login">Iniciar Sesión</button>
+      </form>
+
+      <div class="links">
+        <a href="registro.html" class="link-back">Regístrate</a>
+        <a href="principal.html" class="link-back">Regresar</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Cafetería Universitaria - Todos los derechos reservados</p>
+  </footer>
+  <script>
+    const params = new URLSearchParams(location.search);
+    if (params.get('error') === 'invalid') alert('Credenciales incorrectas');
+    if (params.get('registro') === 'ok') alert('Registro exitoso, ya puedes iniciar sesión');
+    if (params.get('error') === 'db') alert('Error del servidor, intenta más tarde');
+  </script>
+</body>
+</html>

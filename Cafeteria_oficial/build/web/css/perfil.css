@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #90c586; /* Color verde del background general */
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+}
+
+header {
+    background: none;
+}
+
+.navbar {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00341c;
+    font-weight: bold;
+}
+
+.nav-icons img {
+    width: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.perfil-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 180px); /* ajusta según header/footer */
+}
+
+.perfil-info{
+    background: #a8a8a8; /* caja gris */
+    padding: 28px;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.perfil-info .avatar{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.7);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.perfil-info h2{
+    margin: 0;
+    font-size: 1.25rem;
+    color: #222;
+}
+
+.perfil-info p{
+    margin: 0;
+    color: #444;
+    line-height: 1.3;
+}
+
+.perfil-info p strong{ color:#333; }
+
+/* Botón de cerrar sesión */
+.btn-logout{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #c0392b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background .15s ease, transform .08s ease;
+}
+.btn-logout:hover{ background: #a23124}
+
+footer {
+    background: #5e9e54;
+    padding: 40px;
+    margin-top: 50px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    clear: both;
+    z-index: 0;
+}
