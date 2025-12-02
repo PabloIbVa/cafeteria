@@ -193,3 +193,16 @@ footer {
     text-align: center;
     color: #fff;
 }
+
+.container-detalle {
+    /* Centrado */
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto; 
+
+    /* Estilo visual */
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
