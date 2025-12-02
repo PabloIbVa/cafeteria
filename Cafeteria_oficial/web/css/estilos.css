@@ -3,6 +3,9 @@ body {
     margin: 0;
     background-color: #B9D7A8;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Centrado de contenedores */
@@ -124,7 +127,7 @@ input {
 footer {
     background: #5e9e54;
     padding: 40px;
-    margin-top: 50px;
+    margin-top: auto;
     text-align: center;
     color: #fff;
     position: relative;
