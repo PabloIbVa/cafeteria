@@ -145,9 +145,9 @@ function cargarPedidos() {
             <div style="font-weight:bold">${truncate(p.nombres || p.primer_producto_nombre || 'Pedido', 30)}</div>
             <div style="font-size:12px;color:#666">${p.fecha}</div>
           </div>
-          <div>
-            <span class="estado ${estadoClass(p.estado)}">${p.estado}</span>
-          </div>
+          <a class="estado-btn" href="detalle_pedido?id=${p.id}">
+            <button class="estado ${estadoClass(p.estado)}">${p.estado}</button>
+          </a>
         `;
         cont.appendChild(div);
       });
