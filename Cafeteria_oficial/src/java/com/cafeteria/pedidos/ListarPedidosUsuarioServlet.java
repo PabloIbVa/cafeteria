@@ -32,11 +32,24 @@ public class ListarPedidosUsuarioServlet extends HttpServlet {
                 return;
             }
 
+            // MODIFICACIÓN: Leer parámetro "limit"
+            int limit = 3; // Default para el carrito
+            String limitParam = request.getParameter("limit");
+            if (limitParam != null && !limitParam.isEmpty()) {
+                try {
+                    limit = Integer.parseInt(limitParam);
+                } catch (NumberFormatException e) {
+                    limit = 3;
+                }
+            }
+
             PedidoDAO dao = new PedidoDAO();
-            List<Map<String,Object>> pedidos = dao.listarUltimosPedidos(idUsuario, 3);
+            // Llamamos al DAO con el límite dinámico
+            List<Map<String,Object>> pedidos = dao.listarUltimosPedidos(idUsuario, limit);
 
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(new Gson().toJson(pedidos));
+            
         } catch (Exception ex) {
             ex.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

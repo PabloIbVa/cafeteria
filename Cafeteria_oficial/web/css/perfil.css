@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #90c586; /* Color verde del background general */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #90c586;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -19,9 +19,7 @@ body {
     background: transparent;
 }
 
-header {
-    background: none;
-}
+header { background: none; }
 
 .navbar {
     background: #ffffff;
@@ -30,6 +28,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .navbar a {
@@ -44,93 +43,166 @@ header {
     cursor: pointer;
 }
 
-.perfil-container{
+/* --- CONTENEDOR PRINCIPAL --- */
+.perfil-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; /* Para que ambas cajas tengan la misma altura */
     padding: 40px 20px;
-    min-height: calc(100vh - 180px); /* ajusta según header/footer */
+    /* Ajustamos el ancho máximo para que se vea compacto */
+    max-width: 1000px; 
+    margin: 0 auto;
+    min-height: calc(100vh - 180px);
 }
 
-.perfil-info{
-    flex: 0 0 60%; /* ocupa el 60% del ancho del contenedor */
-    background: #a8a8a8; /* caja gris */
-    padding: 28px;
-    border-radius: 12px 0 0 12px ;
-    max-width: 480px;
-    width: 100%;
+/* --- CAJA IZQUIERDA: INFO USUARIO --- */
+.perfil-info {
+    flex: 0 0 35%; /* Ocupa el 35% */
+    background: #f0f0f0; /* Un gris más claro se ve mejor */
+    padding: 30px;
+    border-radius: 12px 0 0 12px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 15px;
     align-items: center;
+    justify-content: center; /* Centrado vertical */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
 }
 
-.perfil-info .avatar{
+.perfil-info .avatar {
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 4px solid rgba(255,255,255,0.7);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    border-radius: 50%; /* Hacemos el avatar redondo */
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.perfil-info h2{
-    margin: 0;
-    font-size: 1.25rem;
-    color: #222;
-}
-
-.perfil-info p{
-    margin: 0;
-    color: #444;
-    line-height: 1.3;
-}
-
-.perfil-info p strong{ color:#333; }
-
-/* Botón de cerrar sesión */
-.btn-logout{
-    display: inline-block;
-    margin-top: 12px;
-    padding: 8px 16px;
+.perfil-info h2 { color: #222; margin: 0; }
+.perfil-info p { color: #555; margin: 0; }
+.btn-logout {
+    margin-top: 20px;
+    padding: 10px 20px;
     background: #c0392b;
     color: #fff;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background .15s ease, transform .08s ease;
+    border-radius: 6px;
+    transition: 0.3s;
 }
-.btn-logout:hover{ background: #a23124}
+.btn-logout:hover { background: #a23124; }
 
+/* --- CAJA DERECHA: HISTORIAL --- */
 .historial-compras {
-    /* igual tamaño y estilo base que .perfil-info */
-    flex: 0 0 60%;
-    background: #a8a8a8;
-    padding: 28px;
-    border-radius: 0 12px 12px 0; /* esquinas opuestas para contraste */
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
+    flex: 0 0 65%; /* Ocupa el resto (65%) */
+    background: #ffffff; /* Fondo blanco para resaltar pedidos */
+    padding: 30px;
+    border-radius: 0 12px 12px 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    align-items: center;
-    border-left: 2px solid #000;
-    padding-left: 24px;
+    /* SCROLL MAGICO AQUI: */
+    max-height: 500px; /* Altura fija */
+    overflow-y: auto;  /* Scroll vertical si se pasa */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
 }
 
 .historial-compras h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    position: sticky; /* El título se queda fijo al hacer scroll */
+    top: 0;
+    background: #fff;
+    z-index: 10;
 }
+
+/* Estilos de la Scrollbar (Chrome/Safari) */
+.historial-compras::-webkit-scrollbar { width: 8px; }
+.historial-compras::-webkit-scrollbar-track { background: #f1f1f1; }
+.historial-compras::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+.historial-compras::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* --- ESTILOS DE LOS PEDIDOS (Igual que Carrito) --- */
+#contenedorPedidos {
+    width: 100%;
+}
+
+.pedido-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+}
+
+.pedido-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.pedido-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.pedido-info {
+    flex: 1;
+    text-align: left;
+}
+
+.pedido-titulo {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.pedido-fecha {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.estado-btn {
+    text-decoration: none;
+}
+
+.estado {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+/* Colores de estado */
+.pendiente { background: #f39c12; }
+.preparado { background: #3498db; }
+.listo { background: #27ae60; }
+.entregado { background: #2c3e50; }
+.cancelado { background: #c0392b; }
 
 footer {
     background: #5e9e54;
-    padding: 40px;
+    padding: 20px;
     margin-top: auto;
     text-align: center;
     color: #fff;
-    position: relative;
-    clear: both;
-    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .perfil-container { flex-direction: column; align-items: center; }
+    .perfil-info, .historial-compras { flex: 1; width: 100%; border-radius: 12px; margin-bottom: 20px; }
+    .historial-compras { max-height: none; } /* En móvil quitamos altura fija */
 }
