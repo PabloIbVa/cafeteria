@@ -178,4 +178,53 @@ public class PedidoDAO {
         }
         return salida;
     }
+    
+    // Agrega esto en com.cafeteria.pedidos.PedidoDAO
+
+    // 1. Obtener la información general del pedido por ID
+    public Map<String, Object> obtenerPedidoPorId(int idPedido) throws Exception {
+        String sql = "SELECT id_pedido, fecha, precio_total, tiempo_total, estado FROM pedidos WHERE id_pedido = ?";
+        Map<String, Object> pedido = null;
+
+        try (Connection con = ConexionBD.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idPedido);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    pedido = new HashMap<>();
+                    pedido.put("id_pedido", rs.getInt("id_pedido"));
+                    pedido.put("fecha", rs.getDate("fecha").toString());
+                    pedido.put("precio_total", rs.getInt("precio_total"));
+                    pedido.put("tiempo_total", rs.getInt("tiempo_total"));
+                    pedido.put("estado", rs.getString("estado"));
+                }
+            }
+        }
+        return pedido;
+    }
+
+// 2. Obtener los productos (detalles) de ese pedido
+    public List<Map<String, Object>> obtenerDetallesPedido(int idPedido) throws Exception {
+        String sql = "SELECT p.nombre, p.src, dp.cantidad " +
+                     "FROM detalle_pedidos dp " +
+                     "JOIN productos p ON dp.id_producto = p.id_producto " +
+                     "WHERE dp.id_pedido = ?";
+
+        List<Map<String, Object>> lista = new ArrayList<>();
+
+        try (Connection con = ConexionBD.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idPedido);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("nombre", rs.getString("nombre"));
+                    item.put("src", rs.getString("src"));
+                    item.put("cantidad", rs.getInt("cantidad"));
+                    lista.add(item);
+                }
+            }
+        }
+        return lista;
+    }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido - Cafetería</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/detalle.css">
+</head>
+<body>
+    
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="principal.html" class="logo">Cafetería Universitaria</a>
+            <div class="nav-icons">
+                <a href="busqueda.html"><img src="src/principal/lupa.png" alt="Buscar"></a>
+                <a href="carro.html"><img src="src/principal/carrito.png" alt="Carrito"></a>
+                <a href="perfil.jsp"><img src="src/principal/usuario.png" alt="Perfil"></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-detalle">
+        
+        <h1 id="tituloPedido">Pedido no. ...</h1>
+
+        <div class="detalle-layout">
+            <div class="lista-productos" id="listaProductos">
+                <p>Cargando productos...</p>
+            </div>
+
+            <div class="resumen-info">
+                <div class="fila-resumen">
+                    <span>Costo total</span>
+                    <span class="valor-grande" id="txtTotal">$ 0</span>
+                </div>
+                <div class="fila-resumen">
+                    <span>Tiempo</span>
+                    <span class="valor-medio" id="txtTiempo">0 min</span>
+                </div>
+                <div class="fila-resumen">
+                    <span>Estado</span>
+                    <span class="valor-medio" id="txtEstado">...</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="carro.html" class="link-regresar">Regresar</a>
+    </div>
+
+    <footer>
+        <p>© 2025 Cafetería Universitaria - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/detalle_pedido.js"></script>
+</body>
+</html>
