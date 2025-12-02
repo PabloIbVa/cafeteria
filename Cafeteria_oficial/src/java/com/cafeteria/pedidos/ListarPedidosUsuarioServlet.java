@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.*;
 import com.google.gson.Gson;
 
-@WebServlet("/ListarPedidosUsuario")
+@WebServlet("/ListarPedidosUsuarioServlet")
 public class ListarPedidosUsuarioServlet extends HttpServlet {
 
     @Override

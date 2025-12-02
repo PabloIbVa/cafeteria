@@ -5,8 +5,6 @@
 package com.cafeteria.productos;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
@@ -16,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/ActualizarCarrito")
+@WebServlet("/ActualizarCarritoServlet")
 public class ActualizarCarritoServlet extends HttpServlet {
     
     @Override
